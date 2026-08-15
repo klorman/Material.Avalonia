@@ -3,9 +3,16 @@ name: Build and publish
 on:
     push:
         branches:
-            - '!master'
-            - '!main'
-            - '!release/**'
+            - '**'
+        paths-ignore:
+            - Material.Avalonia.Demo*/** # Ignore demo projects, do not trigger builds for them
+        tags:
+            - v**
+    pull_request:
+
+permissions:
+    id-token: write
+    contents: write
 
 jobs:
     build:
@@ -19,7 +26,7 @@ jobs:
               with:
                   dotnet-version: 10
             - name: Build and Publish
-              uses: SKProCH/CommonWorkflows/actions/build-publish@main
+              uses: SKProCH/CommonWorkflows/actions/build-publish@v1
               with:
-                  only-build: true
+                  publish-nightly: true
                   nuget-user: ${{ secrets.NUGET_USER }}
