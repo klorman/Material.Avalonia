@@ -30,9 +30,5 @@
     <Compile Update="Styles\ShowMeTheXamlStyles.XamlDisplayAvaloniaEditThemeBehavior.cs">
       <DependentUpon>ShowMeTheXamlStyles.axaml</DependentUpon>
     </Compile>
-    <Compile Update="Pages\TreeDataGridsDemo.axaml.cs">
-      <DependentUpon>TreeDataGridsDemo.axaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
 </Project>
