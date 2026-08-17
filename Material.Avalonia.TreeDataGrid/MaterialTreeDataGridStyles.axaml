@@ -1,7 +1,7 @@
 <treeDataGrid:MaterialTreeDataGridStyles xmlns="https://github.com/avaloniaui"
-                                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                                 xmlns:treeDataGrid="clr-namespace:Material.Avalonia.TreeDataGrid"
-                                 x:Class="Material.Avalonia.TreeDataGrid.MaterialTreeDataGridStyles">
+                                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                         xmlns:treeDataGrid="clr-namespace:Material.Avalonia.TreeDataGrid"
+                                         x:Class="Material.Avalonia.TreeDataGrid.MaterialTreeDataGridStyles">
   <treeDataGrid:MaterialTreeDataGridStyles.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>

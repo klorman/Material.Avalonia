@@ -3,6 +3,7 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
     <AvaloniaVersion>11.1.0</AvaloniaVersion>
+    <TreeDataGridVersion>12.0.0</TreeDataGridVersion>
     <ShowMeTheXamlVersion>1.5.1</ShowMeTheXamlVersion>
   </PropertyGroup>
   <ItemGroup>
@@ -12,7 +13,7 @@
     <PackageVersion Include="Avalonia" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Avalonia.Controls.DataGrid" Version="$(AvaloniaVersion)" />
-    <PackageVersion Include="Avalonia.Controls.TreeDataGrid" Version="11.1.0" />
+    <PackageVersion Include="TreeDataGrid" Version="$(TreeDataGridVersion)" />
     <PackageVersion Include="Avalonia.Controls.ItemsRepeater" Version="11.0.9" />
     <PackageVersion Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Avalonia.Themes.Simple" Version="$(AvaloniaVersion)" />

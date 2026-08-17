@@ -9,30 +9,35 @@ namespace Material.Avalonia.TreeDataGrid;
 
 internal static class TextColumnAlignmentProvider
 {
-    private static readonly ConcurrentDictionary<Type, Func<object, TextAlignment?>> _cache = new();
+    private static readonly ConcurrentDictionary<Type, Func<object, TextAlignment?>> Cache = new();
 
     public static TextAlignment? GetTextAlignment(object column)
     {
         ArgumentNullException.ThrowIfNull(column);
 
-        var colType = column.GetType();
-        if (!colType.IsGenericType
-            || colType.GetGenericTypeDefinition() != typeof(TextColumn<,>))
+        Type columnType = column.GetType();
+        if (!columnType.IsGenericType || columnType.GetGenericTypeDefinition() != typeof(TextColumn<,>))
+        {
             return null;
+        }
 
-        var getter = _cache.GetOrAdd(colType, BuildGetter);
+        Func<object, TextAlignment?> getter = Cache.GetOrAdd(columnType, BuildGetter);
         return getter(column);
     }
 
-    [UnconditionalSuppressMessage("AOT", "IL3050:Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.", Justification = "<Pending>")]
+    [UnconditionalSuppressMessage(
+        "AOT",
+        "IL3050:Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.",
+        Justification = "The closed TextColumn type is already present when the getter is built.")]
     private static Func<object, TextAlignment?> BuildGetter(Type closedColumnType)
     {
-        var helperMethod = typeof(TextColumnHelper)
-            .GetMethod(nameof(TextColumnHelper.GetTextAlignmentGeneric),
+        MethodInfo helperMethod = typeof(TextColumnHelper)
+            .GetMethod(
+                nameof(TextColumnHelper.GetTextAlignmentGeneric),
                 BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public)!;
 
-        var genArgs = closedColumnType.GetGenericArguments();
-        var closedMethod = helperMethod.MakeGenericMethod(genArgs);
+        Type[] genericArguments = closedColumnType.GetGenericArguments();
+        MethodInfo closedMethod = helperMethod.MakeGenericMethod(genericArguments);
 
         return (Func<object, TextAlignment?>)closedMethod
             .CreateDelegate(typeof(Func<object, TextAlignment?>));

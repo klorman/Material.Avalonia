@@ -1,5 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <Description>TreeDataGrid styles library of Material.Avalonia.</Description>
     <PackageTags>avalonia xaml material design theme treedatagrid colour color ui ux material-design google-material</PackageTags>
@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Avalonia.Controls.TreeDataGrid" />
+    <PackageReference Include="TreeDataGrid" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,8 +23,7 @@
   <ItemGroup>
     <Content Include="*.props">
       <Pack>true</Pack>
-      <PackagePath>build\;buildTransitive\</PackagePath>
+      <PackagePath>build/;buildTransitive/</PackagePath>
     </Content>
   </ItemGroup>
-
 </Project>

@@ -15,8 +15,13 @@ public class TreeDataGridsDemoViewModel : ViewModelBase
     private bool _cellSelection;
     public FlatTreeDataGridSource<Country> CountriesSource { get; }
     public HierarchicalTreeDataGridSource<OsItem> OsTreeSource { get; }
+    public ObservableCollection<Person> People { get; }
+    public ObservableCollection<FileNode> FileTree { get; }
 
     public TreeDataGridsDemoViewModel() {
+        People = CreatePeople();
+        FileTree = CreateFileTree();
+
         var linuxChildren = new[] {
             new OsItem { Name = "Android", Icon = MaterialIconKind.Android },
             new OsItem { Name = "Arch Linux", Icon = MaterialIconKind.Arch },
@@ -93,6 +98,50 @@ public class TreeDataGridsDemoViewModel : ViewModelBase
     }
     
     public void AddCountry(Country country) => _data.Add(country);
+
+    private static ObservableCollection<Person> CreatePeople()
+    {
+        return
+        [
+            new Person("Eleanor", "Pope", 32, "London", true),
+            new Person("Jeremy", "Navarro", 74, "Madrid", false),
+            new Person("Mina", "Berg", 41, "Oslo", true),
+            new Person("Nikolai", "Volkov", 28, "Riga", true),
+            new Person("Amelia", "Chen", 36, "Vancouver", false)
+        ];
+    }
+
+    private static ObservableCollection<FileNode> CreateFileTree()
+    {
+        return
+        [
+            new FileNode(
+                "src",
+                "Folder",
+                children:
+                [
+                    new FileNode("Material.Avalonia.TreeDataGrid", "Project", children:
+                    [
+                        new FileNode("MaterialTreeDataGridStyles.axaml", "Style", 1394),
+                        new FileNode("TreeDataGrid.axaml", "Style", 3233),
+                        new FileNode("TextColumnAlignmentProvider.cs", "C#", 1530)
+                    ]),
+                    new FileNode("Converters", "Folder", children:
+                    [
+                        new FileNode("TreeDataGridSourceColumnAlignmentToDockConverter.cs", "C#", 994)
+                    ])
+                ]),
+            new FileNode(
+                "samples",
+                "Folder",
+                children:
+                [
+                    new FileNode("Material.Avalonia.TreeDataGrid.Demo", "Project")
+                ]),
+            new FileNode("README.md", "Markdown", 5400),
+            new FileNode("LICENSE", "Text", 1100)
+        ];
+    }
 
     public void RemoveSelected()
     {

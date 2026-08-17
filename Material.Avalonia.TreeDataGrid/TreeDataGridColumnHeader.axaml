@@ -3,7 +3,7 @@
                     xmlns:converters="clr-namespace:Material.Avalonia.TreeDataGrid.Converters">
   <StreamGeometry x:Key="TreeDataGridSortIconPath">M436-148v-497.08L210.15-419.23 148-481l331-331 333 333-62.15 61.77L522-645.08V-148h-86Z</StreamGeometry>
   <converters:TreeDataGridSourceColumnAlignmentToDockConverter x:Key="TreeDataGridSourceColumnAlignmentToDockConverter" />
-  
+
   <ControlTheme x:Key="{x:Type TreeDataGridColumnHeader}" TargetType="TreeDataGridColumnHeader">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="MinHeight" Value="56" />
@@ -40,7 +40,7 @@
                 </Thumb.Template>
               </Thumb>
             </Panel>
-            
+
             <ContentPresenter x:Name="PART_ContentPresenter"
                               Content="{TemplateBinding Header}"
                               ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -53,7 +53,7 @@
                   <Binding Path="$parent[TreeDataGridColumnHeader].ColumnIndex" />
                 </MultiBinding>
               </DockPanel.Dock>
-              
+
               <ContentPresenter.DataTemplates>
                 <DataTemplate DataType="x:String">
                   <TextBlock Text="{Binding}"
@@ -62,7 +62,7 @@
                 </DataTemplate>
               </ContentPresenter.DataTemplates>
             </ContentPresenter>
-            
+
             <Path x:Name="SortIcon"
                   Fill="{TemplateBinding Foreground}"
                   Opacity="0.6"
@@ -88,11 +88,11 @@
     <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
       <Setter Property="Opacity" Value="0.8" />
     </Style>
-    
+
     <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
       <Setter Property="Opacity" Value="1" />
     </Style>
-    
+
     <Style Selector="^:not(.no-transitions) /template/ Path#SortIcon">
       <Setter Property="Transitions">
         <Transitions>
@@ -100,13 +100,13 @@
         </Transitions>
       </Setter>
     </Style>
-    
+
     <Style Selector="^ /template/ Path#SortIcon">
       <Setter Property="IsVisible" Value="False" />
       <Setter Property="RenderTransformOrigin" Value="7,7" />
       <Setter Property="RenderTransform" Value="rotate(90deg)" />
     </Style>
-    
+
     <Style Selector="^[SortDirection=Ascending] /template/ Path#SortIcon">
       <Setter Property="IsVisible" Value="True" />
       <Setter Property="RenderTransform" Value="rotate(0deg)" />

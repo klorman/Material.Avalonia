@@ -11,18 +11,18 @@
                 BorderThickness="{TemplateBinding BorderThickness}"
                 CornerRadius="{TemplateBinding CornerRadius}">
           <DockPanel>
-             <ScrollViewer x:Name="PART_HeaderScrollViewer"
-                           DockPanel.Dock="Top"
-                           IsVisible="{TemplateBinding ShowColumnHeaders}"
-                           HorizontalScrollBarVisibility="Hidden"
-                           VerticalScrollBarVisibility="Disabled"
-                           BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}">
-                <Border x:Name="ColumnHeadersPresenterBorder">
-                  <TreeDataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter"
-                                                      ElementFactory="{TemplateBinding ElementFactory}"
-                                                      Items="{TemplateBinding Columns}" />
-                </Border>
-             </ScrollViewer>
+            <ScrollViewer x:Name="PART_HeaderScrollViewer"
+                          DockPanel.Dock="Top"
+                          IsVisible="{TemplateBinding ShowColumnHeaders}"
+                          HorizontalScrollBarVisibility="Hidden"
+                          VerticalScrollBarVisibility="Disabled"
+                          BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}">
+              <Border x:Name="ColumnHeadersPresenterBorder">
+                <TreeDataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter"
+                                                    ElementFactory="{TemplateBinding ElementFactory}"
+                                                    Items="{TemplateBinding Columns}" />
+              </Border>
+            </ScrollViewer>
             <ScrollViewer x:Name="PART_ScrollViewer"
                           HorizontalScrollBarVisibility="Auto"
                           BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}">
@@ -35,21 +35,20 @@
         </Border>
       </ControlTemplate>
     </Setter>
-    
+
     <Style Selector="^ /template/ Border#ColumnHeadersPresenterBorder">
       <Setter Property="BorderThickness" Value="0 0 0 1" />
       <Setter Property="BorderBrush" Value="{TemplateBinding BorderBrush}" />
     </Style>
-    
+
     <Style Selector="^ /template/ ScrollViewer">
       <Setter Property="Theme" Value="{StaticResource MaterialModernScrollViewer}" />
     </Style>
 
-    <!-- Template for classic scrollviewers -->
     <Style Selector="^.ClassicScrollViewer /template/ ScrollViewer">
       <Setter Property="Theme" Value="{StaticResource MaterialScrollViewer}" />
     </Style>
-    
+
     <Style Selector="^.DisableHoveringScrollViewer /template/ ScrollViewer">
       <Setter Property="Margin" Value="0" />
       <Style Selector="^:horizontal">

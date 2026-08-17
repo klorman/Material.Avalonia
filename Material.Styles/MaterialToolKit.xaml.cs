@@ -40,18 +40,18 @@ namespace Material.Styles {
         }
         
 #if NET5_0_OR_GREATER
-        [DynamicDependency(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor, "MaterialDataGridStyles",
-            "Material.Avalonia.DataGrid")]
+        [DynamicDependency(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor, "Material.Avalonia.TreeDataGrid.MaterialTreeDataGridStyles",
+            "Material.Avalonia.TreeDataGrid")]
         [UnconditionalSuppressMessage("Trimming",
             "IL2026:Members annotated with 'RequiresUnreferencedCodeAttribute' require dynamic access otherwise can break functionality when trimming application code",
             Justification = "Referenced by DynamicDependency")]
 #endif
         private void IncludeTreeDataGridStyles() {
-            if (!AppContext.TryGetSwitch("MaterialThemeIncludeTreeDataGrid", out var includeDataGrid) ||
-                !includeDataGrid) return;
-            var dataGridStylesType = Assembly.Load("Material.Avalonia.TreeDataGrid")
+            if (!AppContext.TryGetSwitch("MaterialThemeIncludeTreeDataGrid", out var includeTreeDataGrid) ||
+                !includeTreeDataGrid) return;
+            var treeDataGridStylesType = Assembly.Load("Material.Avalonia.TreeDataGrid")
                 .GetType("Material.Avalonia.TreeDataGrid.MaterialTreeDataGridStyles")!;
-            var instance = Activator.CreateInstance(dataGridStylesType)!;
+            var instance = Activator.CreateInstance(treeDataGridStylesType)!;
             Add((Avalonia.Styling.Styles)instance);
         }
     }

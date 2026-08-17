@@ -22,13 +22,13 @@
         </Border>
       </ControlTemplate>
     </Setter>
-    
+
     <Style Selector="^">
       <Setter Property="Focusable" Value="False" />
       <Setter Property="MinWidth" Value="56" />
       <Setter Property="Padding" Value="8 6" />
     </Style>
-    
+
     <Style Selector="^ /template/ CheckBox#PART_CheckBox">
       <Setter Property="Width" Value="40" />
       <Setter Property="Padding" Value="0" />
