@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <ControlTheme x:Key="{x:Type TreeDataGrid}" TargetType="TreeDataGrid">
+    <Setter Property="CanUserResizeColumns" Value="True" />
     <Setter Property="CornerRadius" Value="4" />
     <Setter Property="BorderBrush" Value="{DynamicResource MaterialDividerBrush}" />
     <Setter Property="Template">
